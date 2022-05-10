@@ -1,0 +1,96 @@
+* {
+    background-color: rgb(255, 255, 255);
+}
+
+body {
+    margin: 30px;
+}
+
+h2 {
+    text-decoration: underline;
+    text-align: center;
+    font-size: 28px;
+}
+
+h5 {
+    text-align: center;
+    font-size: 19px;
+}
+
+/* tr, td {
+    width: 500px;
+    border: 1px solid black;
+    text-align: left;
+    padding: 10px;
+}
+
+table {
+    margin-left: 15px;
+    /* border: 2px solid black; */
+    /* border-spacing: 0px;
+} */
+
+h3 {
+    font-size: 25px;
+    text-align: center;
+    text-decoration: underline;
+} 
+
+.extra_activity tr td {
+    border: none;
+}
+
+.personal_table tr td {
+    border: none;
+    /* border: 1px solid black; */
+    /* border-spacing: 0px; */
+}
+
+/* .portal_table tr td {
+     border: none; 
+ } */
+
+.extra_activity {
+    width: 90%;
+}
+
+.portal_table tr,td {
+    width: 980px;
+    /* border: 1px solid black; */
+    border-spacing: 0px;
+    font-size: 20px;
+}
+
+/* .portal_table {
+    font-size: 50px;
+} */
+
+.personal_table tr td {
+    width: 600px;
+    /* border: 1px solid black; */
+    text-align: left;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.academics_table {
+    margin-left: 15px;
+    /* border: 2px solid black; */
+    border-spacing: 0px;
+    /* width: 500px; */
+    /* border: 1px solid black; */
+    /* padding: 30px; */
+    text-align: center;
+}
+
+.academics_table tr td {
+    border: 1px solid black;
+    width: 500px;
+    padding: 10px;
+}
+
+.academics_table h3 {
+    font-size: 25px;
+    text-align: center;
+    text-decoration: underline;
+}
