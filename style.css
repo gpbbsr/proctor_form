@@ -46,9 +46,10 @@ h3 {
     /* border-spacing: 0px; */
 }
 
-/* .portal_table tr td {
+.portal_table tr td {
      border: none; 
- } */
+     padding: 5px;
+ }
 
 .extra_activity {
     width: 90%;
@@ -93,4 +94,12 @@ h3 {
     font-size: 25px;
     text-align: center;
     text-decoration: underline;
+}
+
+/* print at 60% */
+
+@media print {
+    body {
+        zoom: 0.6;
+    }
 }
