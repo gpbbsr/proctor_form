@@ -1,3 +1,28 @@
+<?php
+include 'db.php';
+
+if(!$conn) {
+    echo "Error connecting the database";
+}
+
+if(isset($_POST['submit'])) {
+    $search = $_POST['search_iteam'];
+    $query = "SELECT * FROM `worksheet` WHERE A LIKE '%$search%' or B LIKE '%$search%' or C LIKE '%$search%' or D LIKE '%$search%' or E LIKE '%$search%' or F LIKE '%$search%' or G LIKE '%$search%' or H LIKE '%$search%' or I LIKE '%$search%' or J LIKE '%$search%' or K LIKE '%$search%' or L LIKE '%$search%' or M LIKE '%$search%' or N LIKE '%$search%' or O LIKE '%$search%' or P LIKE '%$search%' or Q LIKE '%$search%' or R LIKE '%$search%' or S LIKE '%$search%' or T LIKE '%$search%' or U LIKE '%$search%' or V LIKE '%$search%' or W LIKE '%$search%' or X LIKE '%$search%' or Y LIKE '%$search%' or Z LIKE '%$search%' or AA LIKE '%$search%' or AB LIKE '%$search%' or AC LIKE '%$search%' or AD LIKE '%$search%' or AE LIKE '%$search%' or AF LIKE '%$search%' or AG LIKE '%$search%' or AH LIKE '%$search%' or AI LIKE '%$search%' or AJ LIKE '%$search%' or AK LIKE '%$search%' or al LIKE '%$search%' or am LIKE '%$search%' or AN LIKE '%$search%'";
+    $result = mysqli_query($conn, $query);
+    $count = mysqli_num_rows($result);
+    
+    if($count == 0) {
+        echo "No results found";
+    } else {
+        do {
+            echo '<td>' . $row['A'] . '</td>';
+            echo '<td>' . $row['B'] . '</td>';
+        } while ($row = mysqli_fetch_array($result));
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
