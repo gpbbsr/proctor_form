@@ -4,28 +4,13 @@ include 'db.php';
 if (!$conn) {
     echo "Error connecting the database";
 }
+session_start();
 
-if (isset($_POST['submit'])) {
-    $search = $_POST['search_iteam'];
-    $profiles = "SELECT * FROM `jr` WHERE A LIKE '%$search%' or C LIKE '%$search%'";
-    // or C LIKE '%$search%' or D LIKE '%$search%' or E LIKE '%$search%' or F LIKE '%$search%' or G LIKE '%$search%' or H LIKE '%$search%' or I LIKE '%$search%' or J LIKE '%$search%' or K LIKE '%$search%' or L LIKE '%$search%' or M LIKE '%$search%' or N LIKE '%$search%' or O LIKE '%$search%' or P LIKE '%$search%' or Q LIKE '%$search%' or R LIKE '%$search%' or S LIKE '%$search%' or T LIKE '%$search%' or U LIKE '%$search%' or V LIKE '%$search%' or W LIKE '%$search%' or X LIKE '%$search%' or Y LIKE '%$search%' or Z LIKE '%$search%' or AA LIKE '%$search%' or AB LIKE '%$search%' or AC LIKE '%$search%' or AD LIKE '%$search%' or AE LIKE '%$search%' or AF LIKE '%$search%' or AG LIKE '%$search%' or AH LIKE '%$search%' or AI LIKE '%$search%' or AJ LIKE '%$search%' or AK LIKE '%$search%' or al LIKE '%$search%' or am LIKE '%$search%' or AN LIKE '%$search%'
-    $result = $conn->query($profiles);
-
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $A = $row['A'];
-            $B = $row['B'];
-            $C = $row['C'];
-            $D = $row['D'];
-            echo "<tr>";
-            echo "<td>$A</td>";
-            echo "<td>$B</td>";
-            echo "<td>$C</td>";
-            echo "<td>$D</td>";
-            echo "</tr>";
-            
-        
-
+$name = $_GET['key'];
+$query = "SELECT * FROM jr WHERE A = '$name'";
+$result = $conn->query($query);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
 
 ?>
 
@@ -37,56 +22,58 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Document 1</title>
 </head>
 
 <body>
-    <div class="search">
+    <!-- not required search field here will be added back button -->
+    <!-- <div class="search">
         <form action="index.php" method="post">
             <input type="text" name="search_iteam" placeholder="Search">
             <input type="submit" name="submit" value="Search">
         </form>
-    </div>
+    </div> -->
     <div class="head">
         <h2>STUDENT DETAILS FOR PROCTORIAL ACTIVITY</h2>
         <h5>DEPARTMENT OF INFORMATION TECHNOLOGY, GOVT.POLYTECHNIC, BHUBANESWAR,<br>SESSION: 2020-23</h5> <br>
     </div>
     <table class="personal_table">
         <tr>
-            <td>Name of the Student : <?php echo "$C"; ?></td>
-            <td>Father's Name : </td>
+            <td>Name of the Student : <?php  echo $row['C'];?></td>
+            <td>Father's Name : <?php  echo $row['COL 12'];?></td>
         </tr>
         <tr>
-            <td>Registration No : </td>
-            <td>Contact No : </td>
+            <td>Registration No : <?php  echo $row['D'];?></td>
+            <td>Contact No : <?php  echo $row['COL 13'];?></td>
         </tr>
         <tr>
-            <td>Gender : </td>
-            <td>Mother's Name : </td>
+            <td>Gender : <?php  echo $row['COL 5'];?></td>
+            <td>Mother's Name : <?php  echo $row['COL 14'];?></td>
         </tr>
         <tr>
-            <td>Contact No : </td>
-            <td>Contact No : </td>
+            <td>Contact No : <?php  echo $row['COL 6'];?></td>
+            <td>Contact No : <?php  echo $row['COL 15'];?></td>
         </tr>
         <tr>
-            <td>Email ID : </td>
-            <td>Parent's Occupation : </td>
+            <td>Email ID : <?php  echo $row['B'];?></td>
+            <td>Parent's Occupation : <?php  echo $row['COL 16'];?></td>
         </tr>
         <tr>
-            <td>Aadhaar No : </td>
-            <td>Hosteller/Day Scholar : </td>
+            <td>Aadhaar No : <?php  echo $row['COL 7'];?></td>
+            <td><?php  echo $row['COL 17'];?></td>
         </tr>
         <tr>
-            <td>Catagory : </td>
-            <td>D.O.B : </td>
+            <td>Catagory : <?php  echo $row['COL 8'];?></td>
+            <td>D.O.B : <?php  echo $row['COL 18'];?></td>
         </tr>
         <tr>
-            <td>Blood Group : </td>
-            <td>Name of the Scholarship Received : </td>
+            <td>Blood Group : <?php  echo $row['COL 9'];?></td>
+            <td>Name of the Scholarship Received : <?php  echo $row['COL 19'];?></td>
         </tr>
         <tr>
-            <td>Present Address : </td>
-            <td>Permanent Address : </td>
+            <td>Present Address : <?php  echo $row['COL 10'];?></td>
+            <td>Permanent Address : <?php  echo $row['COL 11'];?></td>
         </tr>
     </table> <br> <br>
 
@@ -102,13 +89,13 @@ if (isset($_POST['submit'])) {
         </tr>
         <tr>
             <td>10th</td>
-            <td colspan="2"></td>
-            <td></td>
+            <td colspan="2"><?php  echo $row['COL 20'];?></td>
+            <td><?php  echo $row['COL 21'];?></td>
         </tr>
         <tr>
             <td>12th</td>
-            <td colspan="2"></td>
-            <td></td>
+            <td colspan="2"><?php  echo $row['COL 22'];?></td>
+            <td><?php  echo $row['COL 23'];?></td>
         </tr>
         <tr>
             <td rowspan="7">Diploma</td>
@@ -118,12 +105,12 @@ if (isset($_POST['submit'])) {
         </tr>
         <tr>
             <td>1st</td>
-            <td></td>
+            <td><?php  echo $row['COL 24'];?></td>
             <td></td>
         </tr>
         <tr>
             <td>2nd</td>
-            <td></td>
+            <td><?php  echo $row['COL 25'];?></td>
             <td></td>
         </tr>
         <tr>
@@ -152,33 +139,33 @@ if (isset($_POST['submit'])) {
         <h3>Online Resistration in the Following Portal</h3> <br>
         <tr>
             <td>Digi Locker</td>
-            <td>Yes</td>
+            <td><?php  echo $row['COL 26'];?></td>
             <td>Library Resistration</td>
-            <td>Yes</td>
+            <td><?php  echo $row['COL 30'];?></td>
         </tr>
         <tr>
             <td>Skill Odisha</td>
-            <td>Yes</td>
+            <td><?php  echo $row['COL 27'];?></td>
             <td>NATS PORTAL</td>
-            <td>No</td>
+            <td><?php  echo $row['COL 31'];?></td>
         </tr>
         <tr>
             <td>Swayam,MOOCs</td>
-            <td>Yes</td>
+            <td><?php  echo $row['COL 28'];?></td>
             <td>NCS</td>
-            <td>No</td>
+            <td><?php  echo $row['COL 32'];?></td>
         </tr>
         <tr>
             <td>Anti-Ragging By Student in</td>
-            <td>Yes</td>
+            <td><?php  echo $row['COL 29'];?></td>
             <td>CISCO</td>
-            <td>Yes</td>
+            <td><?php  echo $row['COL 33'];?></td>
         </tr>
         <tr>
             <td>AICTE PORTAL INTERNSHALA</td>
-            <td>Yes</td>
+            <td><?php  echo $row['COL 35'];?></td>
             <td>IT ESSENTIAL</td>
-            <td>Yes</td>
+            <td><?php  echo $row['COL 34'];?></td>
         </tr>
     </table> <br> <br>
 
@@ -187,12 +174,12 @@ if (isset($_POST['submit'])) {
     <table class="extra_activity">
 
         <tr>
-            <td>Strength : </td>
-            <td>Weakness : </td>
+            <td>Strength : <?php  echo $row['COL 37'];?></td>
+            <td>Weakness : <?php  echo $row['COL 38'];?></td>
         </tr>
         <tr>
-            <td>Hobbey : </td>
-            <td>Extracurricular Activities : </td>
+            <td>Hobbey : <?php  echo $row['COL 36'];?> </td>
+            <td>Extracurricular Activities : <?php  echo $row['COL 39'];?></td>
         </tr>
     </table>
     <?php
@@ -201,8 +188,6 @@ if (isset($_POST['submit'])) {
 } else {
     echo "0 results";
 }
-}
-
 ?>
 </body>
 
