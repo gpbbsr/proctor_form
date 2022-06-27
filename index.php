@@ -1,34 +1,3 @@
-<?php
-include 'db.php';
-
-if (!$conn) {
-    echo "Error connecting the database";
-}
-
-if (isset($_POST['submit'])) {
-    $search = $_POST['search_iteam'];
-    $profiles = "SELECT * FROM `jr` WHERE A LIKE '%$search%' or C LIKE '%$search%'";
-    // or C LIKE '%$search%' or D LIKE '%$search%' or E LIKE '%$search%' or F LIKE '%$search%' or G LIKE '%$search%' or H LIKE '%$search%' or I LIKE '%$search%' or J LIKE '%$search%' or K LIKE '%$search%' or L LIKE '%$search%' or M LIKE '%$search%' or N LIKE '%$search%' or O LIKE '%$search%' or P LIKE '%$search%' or Q LIKE '%$search%' or R LIKE '%$search%' or S LIKE '%$search%' or T LIKE '%$search%' or U LIKE '%$search%' or V LIKE '%$search%' or W LIKE '%$search%' or X LIKE '%$search%' or Y LIKE '%$search%' or Z LIKE '%$search%' or AA LIKE '%$search%' or AB LIKE '%$search%' or AC LIKE '%$search%' or AD LIKE '%$search%' or AE LIKE '%$search%' or AF LIKE '%$search%' or AG LIKE '%$search%' or AH LIKE '%$search%' or AI LIKE '%$search%' or AJ LIKE '%$search%' or AK LIKE '%$search%' or al LIKE '%$search%' or am LIKE '%$search%' or AN LIKE '%$search%'
-    $result = $conn->query($profiles);
-
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $A = $row['A'];
-            $B = $row['B'];
-            $C = $row['C'];
-            $D = $row['D'];
-            echo "<tr>";
-            echo "<td>$A</td>";
-            echo "<td>$B</td>";
-            echo "<td>$C</td>";
-            echo "<td>$D</td>";
-            echo "</tr>";
-            
-        
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,11 +6,28 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document 1</title>
 </head>
 
 <body>
-    <div class="search">
+    <!-- Button in middle redirect to search.php -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>Search</h1>
+                    <p>
+                        <a href="search.php" class="btn btn-primary btn-lg">Search</a>
+                    </p>
+                    <p>
+                        <a href="./signup_form" class="btn btn-primary btn-lg" target="blank">Form fill</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="search">
         <form action="index.php" method="post">
             <input type="text" name="search_iteam" placeholder="Search">
             <input type="submit" name="submit" value="Search">
@@ -53,7 +39,7 @@ if (isset($_POST['submit'])) {
     </div>
     <table class="personal_table">
         <tr>
-            <td>Name of the Student : <?php echo "$C"; ?></td>
+            <td>Name of the Student : </td>
             <td>Father's Name : </td>
         </tr>
         <tr>
@@ -96,9 +82,9 @@ if (isset($_POST['submit'])) {
         <h3>Academic Details</h3>
         <tr>
             <td><b>COURSE</b></td>
-            <td colspan="2"><b>Marks Obtained(%)</b></td>
+            <td colspan="2"><b>Marks Obtained(%)</b></td> -->
             <!-- <td></td> -->
-            <td><b>Year of Passing</b></td>
+            <!-- <td><b>Year of Passing</b></td>
         </tr>
         <tr>
             <td>10th</td>
@@ -194,16 +180,9 @@ if (isset($_POST['submit'])) {
             <td>Hobbey : </td>
             <td>Extracurricular Activities : </td>
         </tr>
-    </table>
-    <?php
+    </table> -->
 
-}
-} else {
-    echo "0 results";
-}
-}
 
-?>
 </body>
 
 </html>

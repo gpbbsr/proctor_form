@@ -19,7 +19,7 @@
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                     <h2 id="heading">Sign Up For Proctor Form</h2>
                     <p>Fill all the required fields carefully to go to the next page. </p>
-                    <form id="msform">
+                    <form id="msform" action="index.php" method="POST">
                         <!-- progressbar -->
                         <ul id="progressbar">
                             <li class="active" id="account"><strong>Account</strong></li>
@@ -95,11 +95,11 @@
 
                                 <label class="fieldlabels">Gender: *</label> <br>
                                 <!-- gender male female and others -->
-                                <input type="radio" class="gen" name="gender" id="" > male
+                                <input type="radio" class="gen" name="gender" id="" value="male"> Male
                                 <br>
-                                <input type="radio" class="gen" name="gender" id=""> female
+                                <input type="radio" class="gen" name="gender" id="" value="female"> Female
                                 <br>
-                                <input type="radio" class="gen" name="gender" id=""> others
+                                <input type="radio" class="gen" name="gender" id="" value="others"> Others
                                 <br>
                                 <label class="fieldlabels">Date of Birth: *</label>
                                 <input type="date" name="dob" />
@@ -110,30 +110,30 @@
                                 <label class="fieldlabels">Catagory: *</label> <br>
                                 <select name="catagory" id="">
                                     <option value="">Select Catagory</option>
-                                    <option value="">General</option>
-                                    <option value="">OBC</option>
-                                    <option value="">SC</option>
-                                    <option value="">ST</option>
+                                    <option value="General">General</option>
+                                    <option value="OBC">OBC</option>
+                                    <option value="SC">SC</option>
+                                    <option value="ST">ST</option>
                                 </select> <br> <br>
 
                                 <label class="fieldlabels">Blood group: *</label> <br>
                                 <select name="blood_group" id="">
                                     <option value="">Select Blood Group</option>
-                                    <option value="">A+</option>
-                                    <option value="">A-</option>
-                                    <option value="">B+</option>
-                                    <option value="">B-</option>
-                                    <option value="">AB+</option>
-                                    <option value="">AB-</option>
-                                    <option value="">O+</option>
-                                    <option value="">O-</option>
+                                    <option value="A +ve">A+</option>
+                                    <option value="A -ve">A-</option>
+                                    <option value="B +ve">B+</option>
+                                    <option value="B -ve">B-</option>
+                                    <option value="AB +ve">AB+</option>
+                                    <option value="AB -ve">AB-</option>
+                                    <option value="O +ve">O+</option>
+                                    <option value="O -ve">O-</option>
                                 </select>
 
                                 <br>
                                 <label class="fieldlabels">Living in hostel: *</label> <br>
-                                <input type="radio" class="hostel gen" name="hostel" id="" > Yes
+                                <input type="radio" class="hostel gen" name="hostel" id="" value="Hostel"> Yes
                                 <br>
-                                <input type="radio" class="hostel gen" name="hostel" id=""> No
+                                <input type="radio" class="hostel gen" name="hostel" id="" value="Day Scholar"> No
                                 <br>
 
                                 <!-- present address -->
@@ -220,7 +220,7 @@
 
 
                             </div>
-                            <input type="button" name="next" class="next action-button" value="Submit" />
+                            <input type="submit" name="submit" class="next action-button" value="submit" />
                             <input type="button" name="previous" class="previous action-button-previous"
                                 value="Previous" />
                         </fieldset>
@@ -261,3 +261,52 @@
 </body>
 
 </html>
+
+<?php
+include "../db.php";
+
+// colect data from msform
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $dob = $_POST['dob'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $pincode = $_POST['pincode'];
+    $father_name = $_POST['father_name'];
+    $father_occupation = $_POST['father_occupation'];
+    $father_contact = $_POST['father_contact'];
+    $mother_name = $_POST['mother_name'];
+    $mother_occupation = $_POST['mother_occupation'];
+    $mother_contact = $_POST['mother_contact'];
+    $scholarship_name = $_POST['scholarship_name'];
+    $strength = $_POST['strength'];
+    $weakness = $_POST['weakness'];
+    $hobbies = $_POST['hobbies'];
+    $extra_curricular = $_POST['extra_curricular'];
+    $hsc = $_POST['hsc'];
+    $a12th = $_POST['12th'];
+    $diploma = $_POST['diploma'];
+    $pic = $_POST['pic'];
+    $sign = $_POST['signature'];
+    $hsc_image = $_POST['hsc_image'];
+    $a12th_image = $_POST['12th_image'];
+    $diploma_image = $_POST['diploma_image'];
+    $pic_image = $_POST['pic_image'];
+    $signature_image = $_POST['signature_image'];
+    $query = "INSERT INTO `web`(`name`, `email`, `password`, `dob`, `phone`, `address`, `city`, `state`, `pincode`, `father_name`, `father
+    _occupation`, `father_contact`, `mother_name`, `mother_occupation`, `mother_contact`, `scholarship_name`, `strength`, `weakness`, `hobbies`, `extra_curricular`, `hsc`, `12th`, `diploma`, `pic`, `sign`, `hsc_image`, `12th_image`, `diploma_image`, `pic_image`, `signature_image`) VALUES ('$name', '$email', '$password', '$dob', '$phone', '$address', '$city', '$state', '$pincode', '$father_name', '$father_occupation', '$father_contact', '$mother_name', '$mother_occupation', '$mother_contact', '$scholarship_name', '$strength', '$weakness', '$hobbies', '$extra_curricular', '$hsc', '$12th', '$diploma', '$pic', '$signature', '$hsc_image', '$12th_image', '$diploma_image', '$pic_image', '$signature_image')";
+    $result = mysqli_query($con, $query);
+    if ($result) {
+        echo "<script>alert('Data Inserted Successfully')</script>";
+    } else {
+        echo "<script>alert('Data Not Inserted')</script>";
+    }
+}
+
+
+?>
