@@ -261,50 +261,39 @@
 </body>
 
 </html>
+<?php
+$host = "localhost";
+$username = "root";
+$password = "";
+$database = "proctor";
+
+
+$conn = mysqli_connect($host, $username, $password, $database);
+
+?>
 
 <?php
-include "../db.php";
 
 // colect data from msform
 if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
+    $roll_no = $_POST['roll_no'];
     $email = $_POST['email'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
+    $con_password = $_POST['con_password'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $phno = $_POST['phno'];
+    $gender = $_POST['gender'];
     $dob = $_POST['dob'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $pincode = $_POST['pincode'];
-    $father_name = $_POST['father_name'];
-    $father_occupation = $_POST['father_occupation'];
-    $father_contact = $_POST['father_contact'];
-    $mother_name = $_POST['mother_name'];
-    $mother_occupation = $_POST['mother_occupation'];
-    $mother_contact = $_POST['mother_contact'];
-    $scholarship_name = $_POST['scholarship_name'];
-    $strength = $_POST['strength'];
-    $weakness = $_POST['weakness'];
-    $hobbies = $_POST['hobbies'];
-    $extra_curricular = $_POST['extra_curricular'];
-    $hsc = $_POST['hsc'];
-    $a12th = $_POST['12th'];
-    $diploma = $_POST['diploma'];
-    $pic = $_POST['pic'];
-    $sign = $_POST['signature'];
-    $hsc_image = $_POST['hsc_image'];
-    $a12th_image = $_POST['12th_image'];
-    $diploma_image = $_POST['diploma_image'];
-    $pic_image = $_POST['pic_image'];
-    $signature_image = $_POST['signature_image'];
-    $query = "INSERT INTO `web`(`name`, `email`, `password`, `dob`, `phone`, `address`, `city`, `state`, `pincode`, `father_name`, `father
-    _occupation`, `father_contact`, `mother_name`, `mother_occupation`, `mother_contact`, `scholarship_name`, `strength`, `weakness`, `hobbies`, `extra_curricular`, `hsc`, `12th`, `diploma`, `pic`, `sign`, `hsc_image`, `12th_image`, `diploma_image`, `pic_image`, `signature_image`) VALUES ('$name', '$email', '$password', '$dob', '$phone', '$address', '$city', '$state', '$pincode', '$father_name', '$father_occupation', '$father_contact', '$mother_name', '$mother_occupation', '$mother_contact', '$scholarship_name', '$strength', '$weakness', '$hobbies', '$extra_curricular', '$hsc', '$12th', '$diploma', '$pic', '$signature', '$hsc_image', '$12th_image', '$diploma_image', '$pic_image', '$signature_image')";
-    $result = mysqli_query($con, $query);
+
+    echo "<h1>$dob</h1>";
+    $query = "INSERT INTO `student_info`(`name`, `email`, `password`, `dob`, `phone`, `address`, `city`, `state`, `pincode`, `father_name`, `father_occupation`, `father_contact`, `mother_name`, `mother_occupation`, `mother_contact`, `scholarship_name`, `strength`, `weakness`, `hobbies`, `extra_curricular`, `hsc`) VALUES ('$roll_no', '$email', '$username', '$password', '$con_password', '$fname', '$lname', '$phno', '$dob', '', '', '', '', '', '', '', '', '', '', '', '')";
+    $result = mysqli_query($conn, $query);
     if ($result) {
-        echo "<script>alert('Data Inserted Successfully')</script>";
+        echo "<h1>Fuck you</h1>";
     } else {
-        echo "<script>alert('Data Not Inserted')</script>";
+        echo "<h1>Fuck not you</h1>";
     }
 }
 
