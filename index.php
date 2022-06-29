@@ -23,6 +23,10 @@
                     <p>
                         <a href="./signup_form" class="btn btn-primary btn-lg" target="blank">Form fill</a>
                     </p>
+                    <!-- Redirect to signup page -->
+                    <p>
+                        <a href="./signup_form" class="btn btn-primary btn-lg" target="blank">Signup</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -83,8 +87,8 @@
         <tr>
             <td><b>COURSE</b></td>
             <td colspan="2"><b>Marks Obtained(%)</b></td> -->
-            <!-- <td></td> -->
-            <!-- <td><b>Year of Passing</b></td>
+    <!-- <td></td> -->
+    <!-- <td><b>Year of Passing</b></td>
         </tr>
         <tr>
             <td>10th</td>

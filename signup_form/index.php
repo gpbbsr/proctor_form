@@ -288,7 +288,7 @@ if (isset($_POST['submit'])) {
     $dob = $_POST['dob'];
 
     echo "<h1>$dob</h1>";
-    $query = "INSERT INTO `student_info`(`name`, `email`, `password`, `dob`, `phone`, `address`, `city`, `state`, `pincode`, `father_name`, `father_occupation`, `father_contact`, `mother_name`, `mother_occupation`, `mother_contact`, `scholarship_name`, `strength`, `weakness`, `hobbies`, `extra_curricular`, `hsc`) VALUES ('$roll_no', '$email', '$username', '$password', '$con_password', '$fname', '$lname', '$phno', '$dob', '', '', '', '', '', '', '', '', '', '', '', '')";
+    $query = "INSERT INTO `web`(`name`, `email`, `password`, `dob`, `phone`, `address`, `city`, `state`, `pincode`, `father_name`, `father_occupation`, `father_contact`, `mother_name`, `mother_occupation`, `mother_contact`, `scholarship_name`, `strength`, `weakness`, `hobbies`, `extra_curricular`, `hsc`) VALUES ('$roll_no', '$email', '$username', '$password', '$con_password', '$fname', '$lname', '$phno', '$dob', '', '', '', '', '', '', '', '', '', '', '', '')";
     $result = mysqli_query($conn, $query);
     if ($result) {
         echo "<h1>Fuck you</h1>";
