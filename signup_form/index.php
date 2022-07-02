@@ -6,8 +6,8 @@
     <title>CodePen - Multi-step form</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
-    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./password_verify.css">
+    <link rel="stylesheet" href="./style.css">
 
 </head>
 
@@ -28,8 +28,7 @@
                             <li id="confirm"><strong>Finish</strong></li>
                         </ul>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                         </div> <br>
 
                         <!-- fieldsets -->
@@ -81,6 +80,18 @@
                                     </div>
                                     <div class="col-5">
                                         <h2 class="steps">Step 2 - 4</h2>
+                                    </div>
+                                </div>
+
+                                <!--  -->
+                                <div class="avatar-upload">
+                                    <div class="avatar-edit">
+                                        <input type='file' id="imageUpload" name="profile_pic" accept=".png, .jpg, .jpeg" />
+                                        <label for="imageUpload"></label>
+                                    </div>
+                                    <div class="avatar-preview">
+                                        <div id="imagePreview" style="background-image: url('http://i.pravatar.cc/500?img=7');">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -179,8 +190,7 @@
                                 <br>
                             </div>
                             <input type="button" name="next" class="next action-button" value="Next" />
-                            <input type="button" name="previous" class="previous action-button-previous"
-                                value="Previous" />
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
@@ -221,8 +231,7 @@
 
                             </div>
                             <input type="submit" name="submit" class="next action-button" value="submit" />
-                            <input type="button" name="previous" class="previous action-button-previous"
-                                value="Previous" />
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
@@ -235,7 +244,7 @@
                                     </div>
                                 </div> <br><br>
                                 <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
-                                
+
                                 <div class="row justify-content-center">
                                     <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image">
                                     </div>

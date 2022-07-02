@@ -33,6 +33,3 @@ CREATE TABLE `student_info` (
   `signature_image` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- change default null
-
- DEFAULT ''
