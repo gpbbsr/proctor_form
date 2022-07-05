@@ -19,7 +19,7 @@
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                     <h2 id="heading">Sign Up For Proctor Form</h2>
                     <p>Fill all the required fields carefully to go to the next page. </p>
-                    <form id="msform" action="index.php" method="POST">
+                    <form id="msform" action="index.php" method="POST" enctype="multipart/form-data"> 
                         <!-- progressbar -->
                         <ul id="progressbar">
                             <li class="active" id="account"><strong>Account</strong></li>
@@ -101,8 +101,32 @@
                                 <label class="fieldlabels">Last Name: *</label>
                                 <input type="text" name="lname" placeholder="Last Name" />
 
+                                <label class="fieldlabels">Year of admission: *</label>
+                                <input type="number" min="1900" max="2099" step="1" value="2016" name="year_of_admission" />
+
+                                <label class="fieldlabels">Branch: *</label> <br>
+                                <select name="branch" id="">
+                                    <option value="">Select Branch</option>
+                                    <option value="it">Information Technology</option>
+                                    <option value="mechanical">Mechanical</option>
+                                    <option value="electrical">Electrical</option>
+                                    <option value="etc">Electronics and Telecommunication Engineering</option>
+                                    <option value="civil">Civil</option>
+                                    <option value="arch">Architectural Assistantship </option>
+                                    <option value="mom">Modern Office Management</option>
+                                    <option value="bc">Beauty Culture</option>
+                                </select> <br>
+                                <label for="fieldlabels">Proctor teacher: </label> <br>
+                                <select name="proc_teacher" id="">
+                                    <option value="">Select Proctor Teacher</option>
+                                    <option value="1">Teacher 1</option>
+                                    <option value="2">Teacher 2</option>
+                                </select> <br>
                                 <label class="fieldlabels">Contact No.: *</label>
                                 <input type="text" name="phno" placeholder="Contact No." />
+
+                                <label class="fieldlabels">Whatsapp No.: *</label>
+                                <input type="text" name="contact_wp" placeholder="Whatsapp No." />
 
                                 <label class="fieldlabels">Gender: *</label> <br>
                                 <!-- gender male female and others -->
@@ -116,7 +140,7 @@
                                 <input type="date" name="dob" />
 
                                 <label class="fieldlabels">Aadhar Number: *</label>
-                                <input type="text" name="Aadhar_number" placeholder="Aadhar Number" />
+                                <input type="text" name="aadhaar_no" placeholder="Aadhar Number" />
 
                                 <label class="fieldlabels">Catagory: *</label> <br>
                                 <select name="catagory" id="">
@@ -173,7 +197,7 @@
                                 <input type="text" name="mother_contact" placeholder="Mother's Contact No." />
                                 <br>
                                 <label class="fieldlabels">Name of the Scholarship Recieved: *</label>
-                                <input type="text" name="scholarship_name" placeholder="Type no if not recieved" />
+                                <input type="text" name="scholarship" placeholder="Type no if not recieved" />
 
                                 <!-- strength, weakness, extra curricular activities, Hobbey -->
                                 <label class="fieldlabels">Your Strength: *</label>
@@ -210,23 +234,23 @@
                                 <label class="fieldlabels">HSC / 10<sup>th</sup>: *</label> <br>
                                 <input type="file" name="hsc" id="hsc_image" accept="image/*" placeholder="image">
 
-                                <input type="text" name="" id="" placeholder="Marks in percentage">
-                                <input type="text" name="" id="" placeholder="Year of passing">
+                                <input type="text" name="hsc_mark" id="" placeholder="Marks in percentage">
+                                <input type="text" name="hsc_year" id="" placeholder="Year of passing">
 
                                 <!-- mark in 12th or ITI -->
                                 <label class="fieldlabels">12th / ITI: *</label>
                                 <input type="file" name="12th" accept="image/*" placeholder="image">
-                                <input type="text" name="" id="" placeholder="Marks in percentage">
-                                <input type="text" name="" id="" placeholder="Year of passing">
+                                <input type="text" name="hse_mark" id="" placeholder="Marks in percentage">
+                                <input type="text" name="hse_year" id="" placeholder="Year of passing">
 
                                 <!-- mark in Diploma 1-6th sem -->
                                 <label class="fieldlabels">Diploma: *</label>
-                                <input type="text" name="" id="" placeholder="1st sem in percentage">
-                                <input type="text" name="" id="" placeholder="2nd sem in percentage">
-                                <input type="text" name="" id="" placeholder="3rd sem in percentage">
-                                <input type="text" name="" id="" placeholder="4th sem in percentage">
-                                <input type="text" name="" id="" placeholder="5th sem in percentage">
-                                <input type="text" name="" id="" placeholder="6th sem in percentage">
+                                <input type="text" name="one" id="" placeholder="1st sem in percentage">
+                                <input type="text" name="two" id="" placeholder="2nd sem in percentage">
+                                <input type="text" name="three" id="" placeholder="3rd sem in percentage">
+                                <input type="text" name="four" id="" placeholder="4th sem in percentage">
+                                <input type="text" name="five" id="" placeholder="5th sem in percentage">
+                                <input type="text" name="six" id="" placeholder="6th sem in percentage">
 
 
                             </div>
@@ -285,19 +309,58 @@ $conn = mysqli_connect($host, $username, $password, $database);
 
 // colect data from msform
 if (isset($_POST['submit'])) {
-    $roll_no = $_POST['roll_no'];
+
+    // step 1
+    $regd_no = $_POST['roll_no'];
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $con_password = $_POST['con_password'];
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $phno = $_POST['phno'];
+    
+    // step 2
+    $first_name = $_POST['fname'];
+    $last_name = $_POST['lname'];
+    $branch = $_POST['branch'];
+    $year = $_POST['year_of_admission'];
+    $proctor_teacher = $_POST['proc_teacher'];
+    $contact_no = $_POST['phno'];
+    $contact_wp = $_POST['contact_wp'];
     $gender = $_POST['gender'];
     $dob = $_POST['dob'];
+    $aadhaar_no = $_POST['aadhaar_no'];
+    $catagory = $_POST['catagory'];
+    $blood_group = $_POST['blood_group'];
+    $hostel_status = $_POST['hostel'];
+    // address section step 2
+    $present_address = $_POST['present_address'];
+    $permanent_address = $_POST['permanent_address'];
+    $father_name = $_POST['father_name'];
+    $father_occupation = $_POST['father_occupation'];
+    $father_contact = $_POST['father_contact'];
+    $mother_name = $_POST['mother_name'];
+    $mother_occupation = $_POST['mother_occupation'];
+    $mother_contact = $_POST['mother_contact'];
+    $scholarship = $_POST['scholarship'];
+    $strenghts_of_student = $_POST['strength'];
+    $weakness = $_POST['weakness'];
+    $hobbies = $_POST['hobbies'];
+    $extra_curricualr = $_POST['extra_curricualr'];
 
-    echo "<h1>$dob</h1>";
-    $query = "INSERT INTO `web`(`name`, `email`, `password`, `dob`, `phone`, `address`, `city`, `state`, `pincode`, `father_name`, `father_occupation`, `father_contact`, `mother_name`, `mother_occupation`, `mother_contact`, `scholarship_name`, `strength`, `weakness`, `hobbies`, `extra_curricular`, `hsc`) VALUES ('$roll_no', '$email', '$username', '$password', '$con_password', '$fname', '$lname', '$phno', '$dob', '', '', '', '', '', '', '', '', '', '', '', '')";
+    // step 3 marks
+    $hsc_mark = $_POST['hsc_mark'];
+    $hsc_year = $_POST['hsc_year'];
+    $hse_mark = $_POST['hse_mark'];
+    $hse_year = $_POST['hse_year'];
+    // diploma marks
+    $one = $_POST['one'];
+    $two = $_POST['two'];
+    $three = $_POST['three'];
+    $four = $_POST['four'];
+    $five = $_POST['five'];
+    $six = $_POST['six'];
+
+    $query = "INSERT INTO `student_data` (`id`, `regd_no`, `email`, `username`, `passowrd`, `first_name`, `last_name`, `contact_call`, `contact_wp`, `gender`, `dob`, `aadhaar_number`, `people_category`, `blood_group`, `hostel`, `hostel_room_no`, `present_address`, `permanent_address`, `father_name`, `father_job`, `father_contact`, `mother_name`, `mother_job`, `mother_contact`, `guardian_name`, `guardian_job`, `guardian_contact`, `strength`, `weakness`, `hobbies`, `extra_curricular_activities`, `hsc_mark`, `year_of_pass_hsc`, `col_iti_mark`, `year_of_pass_col_iti`, `year`, `branch`, `sub_teaher_id`) VALUES (NULL, '$regd_no', '$email', '$username', '$password', '$first_name', '$last_name', '$contact_no', '$contact_wp', '$gender', '$dob', '$aadhaar_no', '$catagory', '$blood_group', '$hostel_status', '', '$present_address', '$permanent_address', '$father_name', '$father_occupation', '$father_contact', '$mother_name', '$mother_occupation', '$mother_contact', '', '', '', '$strenghts_of_student', '$weakness', '$hobbies', '$extra_curricualr', '$hsc_mark', '$hsc_year', '$hse_mark', '$hse_year', '$year', '$branch', '$proctor_teacher');";
+
+
     $result = mysqli_query($conn, $query);
     if ($result) {
         echo "<h1>Fuck you</h1>";

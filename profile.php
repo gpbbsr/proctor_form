@@ -7,7 +7,7 @@ if (!$conn) {
 session_start();
 
 $name = $_GET['key'];
-$query = "SELECT * FROM P1819 WHERE `COL 1` = '$name'";
+$query = "SELECT * FROM jr WHERE `A` = '$name'";
 $result = $conn->query($query);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
