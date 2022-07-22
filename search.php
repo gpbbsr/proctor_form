@@ -40,17 +40,17 @@
                         include "db.php";
                         if (isset($_POST['submit'])) {
                             $search_iteam = $_POST['search_iteam'];
-                            $query = "SELECT * FROM jr WHERE `A` LIKE '%$search_iteam%' OR `B` LIKE '%$search_iteam%' OR `C` LIKE '%$search_iteam%' OR `D` LIKE '%$search_iteam%'";
+                            $query = "SELECT * FROM student_details WHERE `regd_no` LIKE '%$search_iteam%' OR `email` LIKE '%$search_iteam%' OR `first_name` LIKE '%$search_iteam%' OR `contact_call` LIKE '%$search_iteam%' OR `year` LIKE '%$search_iteam%'";
                             // $result = mysqli_query($conn, $query);
                             $result = $conn->query($query);
                             if ($result) {
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
-                                        $key = $row['A'];
-                                        $A = $row['B'];
-                                        $B = $row['C'];
-                                        $C = $row['D'];
-                                        $D = $row['COL 4'];
+                                        $key = $row['id'];
+                                        $A = $row['regd_no'];
+                                        $B = $row['email'];
+                                        $C = $row['first_name'];
+                                        $D = $row['regd_no'];
                                         // echo $key; to check if correct key i.e id is being passed to the next page
                         ?>
                     </tr>

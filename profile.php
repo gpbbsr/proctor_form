@@ -7,7 +7,7 @@ if (!$conn) {
 session_start();
 
 $name = $_GET['key'];
-$query = "SELECT * FROM jr WHERE `A` = '$name'";
+$query = "SELECT * FROM student_details WHERE `id` = '$name'";
 $result = $conn->query($query);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -36,44 +36,44 @@ if ($result->num_rows > 0) {
     </div> -->
     <div class="head">
         <h2>STUDENT DETAILS FOR PROCTORIAL ACTIVITY</h2>
-        <h5>DEPARTMENT OF INFORMATION TECHNOLOGY, GOVT.POLYTECHNIC, BHUBANESWAR,<br>SESSION: 2020-23</h5> <br>
+        <h5>DEPARTMENT OF INFORMATION TECHNOLOGY, GOVT.POLYTECHNIC, BHUBANESWAR,<br>SESSION: 20 &nbsp; &nbsp; -&nbsp; &nbsp; </h5> <br>
     </div>
     <table class="personal_table">
         <tr>
-            <td>Name of the Student : <?php  echo $row['COL 3'];?></td>
-            <td>Father's Name : <?php  echo $row['COL 12'];?></td>
+            <td>Name of the Student : <?php  echo $row['first_name'].$row['last_name'];?></td>
+            <td>Father's Name : <?php  echo $row['father_name'];?></td>
         </tr>
         <tr>
-            <td>Registration No : <?php  echo $row['COL 4'];?></td>
-            <td>Contact No : <?php  echo $row['COL 13'];?></td>
+            <td>Registration No : <?php  echo $row['regd_no'];?></td>
+            <td>Contact No : <?php  echo $row['father_contact'];?></td>
         </tr>
         <tr>
-            <td>Gender : <?php  echo $row['COL 5'];?></td>
-            <td>Mother's Name : <?php  echo $row['COL 14'];?></td>
+            <td>Gender : <?php  echo $row['gender'];?></td>
+            <td>Mother's Name : <?php  echo $row['mother_name'];?></td>
         </tr>
         <tr>
-            <td>Contact No : <?php  echo $row['COL 6'];?></td>
-            <td>Contact No : <?php  echo $row['COL 15'];?></td>
+            <td>Contact No : <?php  echo $row['contact_call'];?></td>
+            <td>Contact No : <?php  echo $row['mother_contact'];?></td>
         </tr>
         <tr>
-            <td>Email ID : <?php  echo $row['COL 2'];?></td>
-            <td>Parent's Occupation : <?php  echo $row['COL 16'];?></td>
+            <td>Email ID : <?php  echo $row['email'];?></td>
+            <td>Parent's Occupation : <?php  echo $row['father_job'].$row['mother_job'];?></td>
         </tr>
         <tr>
-            <td>Aadhaar No : <?php  echo $row['COL 7'];?></td>
-            <td><?php  echo $row['COL 17'];?></td>
+            <td>Aadhaar No : <?php  echo $row['aadhaar_number'];?></td>
+            <td><?php  echo $row['hostel'];?></td>
         </tr>
         <tr>
-            <td>Catagory : <?php  echo $row['COL 8'];?></td>
-            <td>D.O.B : <?php  echo $row['COL 18'];?></td>
+            <td>Catagory : <?php  echo $row['people_category'];?></td>
+            <td>D.O.B : <?php  echo $row['dob'];?></td>
         </tr>
         <tr>
-            <td>Blood Group : <?php  echo $row['COL 9'];?></td>
-            <td>Name of the Scholarship Received : <?php  echo $row['COL 19'];?></td>
+            <td>Blood Group : <?php  echo $row['blood_group'];?></td>
+            <td>Name of the Scholarship Received : <?php  echo $row['scholarship'];?></td>
         </tr>
         <tr>
-            <td>Present Address : <?php  echo $row['COL 10'];?></td>
-            <td>Permanent Address : <?php  echo $row['COL 11'];?></td>
+            <td>Present Address : <?php  echo $row['present_address'];?></td>
+            <td>Permanent Address : <?php  echo $row['permanent_address'];?></td>
         </tr>
     </table> <br> <br>
 
@@ -89,13 +89,13 @@ if ($result->num_rows > 0) {
         </tr>
         <tr>
             <td>10th</td>
-            <td colspan="2"><?php  echo $row['COL 20'];?></td>
-            <td><?php  echo $row['COL 21'];?></td>
+            <td colspan="2"><?php  echo $row['hsc_mark'];?></td>
+            <td><?php  echo $row['year_of_pass_hsc'];?></td>
         </tr>
         <tr>
             <td>12th</td>
-            <td colspan="2"><?php  echo $row['COL 22'];?></td>
-            <td><?php  echo $row['COL 23'];?></td>
+            <td colspan="2"><?php  echo $row['col_iti_mark'];?></td>
+            <td><?php  echo $row['year_of_pass_col_iti'];?></td>
         </tr>
         <tr>
             <td rowspan="7">Diploma</td>
@@ -105,22 +105,22 @@ if ($result->num_rows > 0) {
         </tr>
         <tr>
             <td>1st</td>
-            <td>HH<?php  echo $row['COL 24'];?></td>
+            <td><?php  echo $row['d1'];?></td>
             <td></td>
         </tr>
         <tr>
             <td>2nd</td>
-            <td><?php  echo $row['COL 25'];?></td>
+            <td><?php  echo $row['d2'];?></td>
             <td></td>
         </tr>
         <tr>
             <td>3rd</td>
-            <td><?php  echo $row['COL 26'];?></td>
+            <td></td>
             <td></td>
         </tr>
         <tr>
             <td>4th</td>
-            <td><?php  echo $row['COL 27'];?></td>
+            <td></td>
             <td></td>
         </tr>
         <tr>
@@ -139,33 +139,33 @@ if ($result->num_rows > 0) {
         <h3>Online Resistration in the Following Portal</h3> <br>
         <tr>
             <td>Digi Locker</td>
-            <td><?php  echo $row['COL 28'];?></td>
+            <td>Yes</td>
             <td>Library Resistration</td>
-            <td><?php  echo $row['COL 32'];?></td>
+            <td>Yes</td>
         </tr>
         <tr>
             <td>Skill Odisha</td>
-            <td><?php  echo $row['COL 29'];?></td>
+            <td>Yes</td>
             <td>NATS PORTAL</td>
-            <td><?php  echo $row['COL 33'];?></td>
+            <td>No</td>
         </tr>
         <tr>
             <td>Swayam,MOOCs</td>
-            <td><?php  echo $row['COL 30'];?></td>
+            <td>Yes</td>
             <td>NCS</td>
-            <td><?php  echo $row['COL 34'];?></td>
+            <td>No</td>
         </tr>
         <tr>
             <td>Anti-Ragging By Student in</td>
-            <td><?php  echo $row['COL 31'];?></td>
+            <td>Yes</td>
             <td>CISCO</td>
-            <td><?php  echo $row['COL 35'];?></td>
+            <td>Yes</td>
         </tr>
         <tr>
             <td>AICTE PORTAL INTERNSHALA</td>
-            <td><?php  echo $row['COL 37'];?></td>
+            <td>Yes</td>
             <td>IT ESSENTIAL</td>
-            <td><?php  echo $row['COL 36'];?></td>
+            <td>Yes</td>
         </tr>
     </table> <br> <br>
 
@@ -174,12 +174,12 @@ if ($result->num_rows > 0) {
     <table class="extra_activity">
 
         <tr>
-            <td>Strength : <?php  echo $row['COL 39'];?></td>
-            <td>Weakness : <?php  echo $row['COL 40'];?></td>
+            <td>Strength : <?php  echo $row['strength'];?></td>
+            <td>Weakness : <?php  echo $row['weakness'];?></td>
         </tr>
         <tr>
-            <td>Hobbey : <?php  echo $row['COL 38'];?> </td>
-            <td>Extracurricular Activities : <?php  echo $row['COL 41'];?></td>
+            <td>Hobbey : <?php  echo $row['hobbies'];?> </td>
+            <td>Extracurricular Activities : <?php  echo $row['extra_curricular_activities'];?></td>
         </tr>
     </table>
     <?php
